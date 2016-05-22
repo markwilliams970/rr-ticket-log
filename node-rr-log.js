@@ -29,9 +29,16 @@ function handleRequest(request, response) {
 
     // the row is an object with keys set by the column headers
     worksheetRows[rowIndex].Agent = ticketData.assignee;
+
+    // Make a URL out of the ticket ID
     var assignedTicketURL = ticketURLPrefix + ticketData.id;
     worksheetRows[rowIndex].TicketNumber = assignedTicketURL;
-    worksheetRows[rowIndex].save(); // this is async
+
+    // Partner
+    worksheetRows[rowIndex].Partner = ticketData.partner;
+
+    // save is asynchronous:
+    worksheetRows[rowIndex].save();
     rowIndex++;
 }
 
